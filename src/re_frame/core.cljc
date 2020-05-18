@@ -33,7 +33,7 @@
   added to the end of a FIFO queue which already contain events.
 
   Usage:
-     (dispatch [:order-pizza {:supreme 2 :meatlovers 1 :veg 1})"
+     (dispatch [:order-pizza {:supreme 2 :meatlovers 1 :veg 1}])"
   [event]
   (router/dispatch event))
 
@@ -241,7 +241,7 @@
    one arg, assumed to be a `query-id` of a registered subscription handler,
    unregisters the associated handler.
 
-   NOTE: Depending on the usecase it may also be necessary to call 
+   NOTE: Depending on the usecase it may also be necessary to call
          `clear-subscription-cache!`."
   ([]
    (registrar/clear-handlers subs/kind))
@@ -299,7 +299,7 @@
 
 (defn clear-fx ;; think unreg-fx
   "When called with no args, unregisters all effect handlers. When given one arg,
-   assumed to be the `id` of a registered effect handler, unregisters the 
+   assumed to be the `id` of a registered effect handler, unregisters the
    associated handler."
   ([]
    (registrar/clear-handlers fx/kind))
@@ -378,8 +378,8 @@
 
 (defn clear-cofx ;; think unreg-cofx
   "When called with no args, unregisters all coeffect handlers. When given one arg,
-   assumed to be the `id` of a registered coeffect handler, unregisters the 
-   associated handler." 
+   assumed to be the `id` of a registered coeffect handler, unregisters the
+   associated handler."
   ([]
    (registrar/clear-handlers cofx/kind))
   ([id]
@@ -434,8 +434,8 @@
 
 (defn clear-event ;; think unreg-event-*
   "When called with no args, unregisters all event handlers. When given one arg,
-   assumed to be the `id` of a registered event handler, unregisters the 
-   associated handler."  
+   assumed to be the `id` of a registered event handler, unregisters the
+   associated handler."
   ([]
    (registrar/clear-handlers events/kind))
   ([id]
@@ -635,7 +635,7 @@
 
 (defn get-coeffect
   "When called with one arg, returns the coeffects map from the `context`.
-   When called with two or three args, behaves like `clojure.core/get`, 
+   When called with two or three args, behaves like `clojure.core/get`,
    returns the value mapped to `key` in the coeffects map, `not-found` or
    `nil` if `key` is not present."
   ([context]
@@ -653,7 +653,7 @@
 
 (defn get-effect
   "When called with one arg, returns the effects map from the `context`.
-   When called with two or three args, behaves like `clojure.core/get`, 
+   When called with two or three args, behaves like `clojure.core/get`,
    returns the value mapped to `key` in the effects map, `not-found` or
    `nil` if `key` is not present."
   ([context]
@@ -693,10 +693,10 @@
   (loggers/set-loggers! new-loggers))
 
 (defn console
-  "Logs `args` to the console at `level`. 
+  "Logs `args` to the console at `level`.
    Level can be one of `:log` `:error` `:warn` `:debug` `:group` `:groupEnd`.
    If you are writing an extension to re-frame, like prehaps an effect handler,
-   you may want to use re-frame logging so that users can configure logging 
+   you may want to use re-frame logging so that users can configure logging
    from a central location.
 
    usage: (console :error \"Oh, dear God, it happened:\" a-var \"and\" another)
